@@ -88,11 +88,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\bootstrap-grid.css" />
+    <Content Include="CSS\bootstrap-grid.min.css" />
+    <Content Include="CSS\bootstrap-reboot.css" />
+    <Content Include="CSS\bootstrap-reboot.min.css" />
+    <Content Include="CSS\bootstrap.css" />
+    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\SondageGoldeCss.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Logo.PNG" />
+    <Content Include="JavaScript\bootstrap.bundle.js" />
+    <Content Include="JavaScript\bootstrap.bundle.min.js" />
+    <Content Include="JavaScript\bootstrap.js" />
+    <Content Include="JavaScript\bootstrap.min.js" />
+    <Content Include="JavaScript\SondageGoldJavaScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -100,7 +114,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
+    <Content Include="CSS\bootstrap-grid.css.map" />
+    <Content Include="CSS\bootstrap-grid.min.css.map" />
+    <Content Include="CSS\bootstrap-reboot.css.map" />
+    <Content Include="CSS\bootstrap-reboot.min.css.map" />
+    <Content Include="CSS\bootstrap.css.map" />
+    <Content Include="CSS\bootstrap.min.css.map" />
+    <Content Include="JavaScript\bootstrap.bundle.js.map" />
+    <Content Include="JavaScript\bootstrap.bundle.min.js.map" />
+    <Content Include="JavaScript\bootstrap.js.map" />
+    <Content Include="JavaScript\bootstrap.min.js.map" />
     <None Include="packages.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Sondange.cshtml" />
+    <Content Include="Views\Home\Vote.cshtml" />
+    <Content Include="Views\Home\Resultat.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,7 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
+    <Folder Include="Content\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
