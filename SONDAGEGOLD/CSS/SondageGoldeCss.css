@@ -69,9 +69,65 @@ nav li:hover {
 }
 
 
-.formulaire{
-    height:300px;
+.formulaire {
+    margin: 140px 140px 40px 140px;
+    background-color: dimgrey;
+    height: 500px;
+  
+    text-align: center;
+    border: solid 2px;
+    text-decoration: none;
 
+}
+.question {
+    margin-top: 10px;
+    margin-bottom: 70px;
+    text-align: center;
+    border-radius: 5px;
+    width:700px;
+}
+.Reponse {
+    width: 700px;
+    text-align: center;
+    border-radius: 5px;
+    margin-right:120px;
+}
+label {
+  
+    margin-right: 20px;
+}
+
+.Reponse:hover, .question:hover {
+        border: 2px solid blue;
+}
+/*.form{
+  
+    text-align: center;
+}*/
+#checkbox{
+    width:20px;height:20px;
+    margin-top:20px;
+   
+
+}
+.barDeprogression {
+    margin: 20px 100px 30px 100px;
+    width: 500px;
+    height: 35px;
+    text-align: center;
+}
+
+.valider {
+    margin-top: 10px;
+}
+#barP {
+   
+    display: block;
+    border: solid 2px;
+}
+.ConteneurBarDeProgression {
+    width: 100px;
+    border: solid 2px;
 }
 footer {
     text-align: center;

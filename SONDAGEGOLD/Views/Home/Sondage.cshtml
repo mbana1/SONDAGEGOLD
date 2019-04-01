@@ -7,6 +7,7 @@
 
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
@@ -18,13 +19,13 @@
 <body id="CorpDepage">
     <header>
         <!-- en tête de page -->
-    
-        <nav  class="navbar">
+
+        <nav class="navbar">
             <ul>
                 <li class="actif"><a role="button" href="@Url.Action("Index")">Home</a></li>
                 <li><a role="button" href="@Url.Action("Sondage")">Sondage</a></li>
-                <li><a role="button" href="@Url.Action("Resultat")">Vote</a></li>
-                <li><a role="button" href="@Url.Action("Vote")">Resultat</a></li>
+                <li><a role="button" href="@Url.Action("Vote")">Vote</a></li>
+                <li><a role="button" href="@Url.Action("Resultat")">Resultat</a></li>
                 <li><a role="button" href="@Url.Action("Suppression")">Supprimer</a></li>
                 <li class="btnRecherche"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
                 <li id="btnRecherche"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></li>
@@ -38,33 +39,55 @@
 
     <aside>
 
-        <p id="texteIntroduction">Cum saepe multa, tum memini domi in hemicyclio sedentem, ut solebat, cum et ego essem una et</p>
-        <div>
-            <form action="@Url.Action("SubmitCreationLivre")">
-                <div class="form-group" style="align-items:center; text-align:center; align-content:center" >
-                    <label style="text-align:center" for="exampleInputEmail1">Question</label>
-                    <input style="width:250px" type="text" class="form-control" placeholder="Entrez votre question">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div class="formulaire">
+            <form class="form" action="@Url.Action("SubmitCreationLivre")">
+
+                <h1>Question</h1>
+
+                <input name="Question" class="question" type="text" placeholder="Entrez votre question">
+                <div class="mm1">
+                    <label for="Rep1">Reponse N°1:</label>
+                    <input name="Rep1" class="Reponse" type="text" placeholder="Entrez votre Réponse">
                 </div>
-               
+                <div class="mm">
+                    <label for="Rep2">Reponse N°2:</label>
+                    <input name="Rep2" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="mm">
+                    <label for="Rep3">Reponse N°3:</label>
+                    <input name="Rep3" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="mm">
+                    <label for="Rep4">Reponse N°4:</label>
+                    <input name="Rep4" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="mm">
+                    <label for="Rep5">Reponse N°5:</label>
+                    <input name="Rep5" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="mm">
+                    <input name="checkbox" class="" type="checkbox" id="checkbox">
+                    <label>
+                        Autoriser les Réponses multiples
+                    </label>
+                </div>
+                <div class="boutonformulaire">
+                    <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />
+                </div>
+
+
             </form>
 
-            <form action="@Url.Action("SubmitCreationLivre")">
-                <input type="text" name="Titre" />
-                <input type="text" name="Auteur" />
-                <input type="submit" value="Enregistrer" />
-
-            </form>
 
 
         </div>
 
-        <div class="formulaire"></div>
     </aside>
 
-        <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
-        <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
-        <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="~/JavaScript/jquery.js"></script>
 </body>
 
 </html>

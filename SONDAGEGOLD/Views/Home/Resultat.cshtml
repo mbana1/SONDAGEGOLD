@@ -7,11 +7,64 @@
 
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/SondageGoldeCss.css" />
     <meta name="viewport" content="width=device-width" />
-    <title>Resultat</title>
+    <title>Resulta</title>
 </head>
-<body>
-    <div> 
-    </div>
+
+<body id="CorpDepage">
+    <header>
+        <!-- en tête de page -->
+
+        <nav class="navbar">
+            <ul>
+                <li class="actif"><a role="button" href="@Url.Action("Index")">Home</a></li>
+                <li><a role="button" href="@Url.Action("Sondage")">Sondage</a></li>
+                <li><a role="button" href="@Url.Action("Vote")">Vote</a></li>
+                <li><a role="button" href="@Url.Action("Resultat")">Resultat</a></li>
+                <li><a role="button" href="@Url.Action("Suppression")">Supprimer</a></li>
+                <li class="btnRecherche"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
+                <li id="btnRecherche"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></li>
+            </ul>
+        </nav> <!-- menu -->
+    </header>
+
+
+    <aside>
+        <div class="formulaire">
+            <h1>Question</h1>
+            
+            <div class="progress barDeprogression ">
+                <label for="Rep2">Reponse N°2:</label>
+                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            </div>
+            
+           
+            <div class="progress barDeprogression">
+                <label for="Rep2">Reponse N°2:</label>
+                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+            </div>
+            <div class="progress barDeprogression">
+                <label for="Rep2">Reponse N°2:</label>
+                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
+            </div>
+            <div class="progress barDeprogression">
+                <label for="Rep2">Reponse N°2:</label>
+                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+            </div>
+
+
+
+
+        </div>
+</aside>
+
+    <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
