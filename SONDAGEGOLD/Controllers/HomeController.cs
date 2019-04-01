@@ -13,7 +13,7 @@ namespace SONDAGEGOLD.Controllers
         {
             return View();
         }
-        public ActionResult Sondange()
+        public ActionResult Sondage()
         {
             return View();
         }
@@ -22,6 +22,10 @@ namespace SONDAGEGOLD.Controllers
             return View();
         }
         public ActionResult Resultat()
+        {
+            return View();
+        }
+        public ActionResult Suppression()
         {
             return View();
         }

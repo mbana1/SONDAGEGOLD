@@ -96,6 +96,7 @@
     <Content Include="CSS\bootstrap.min.css" />
     <Content Include="CSS\SondageGoldeCss.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Capture.PNG" />
     <Content Include="Images\Logo.PNG" />
     <Content Include="JavaScript\bootstrap.bundle.js" />
     <Content Include="JavaScript\bootstrap.bundle.min.js" />
@@ -126,9 +127,10 @@
     <Content Include="JavaScript\bootstrap.min.js.map" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Sondange.cshtml" />
     <Content Include="Views\Home\Vote.cshtml" />
     <Content Include="Views\Home\Resultat.cshtml" />
+    <Content Include="Views\Home\Suppression.cshtml" />
+    <Content Include="Views\Home\Sondage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,0 +1,70 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/SondageGoldeCss.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+
+<body id="CorpDepage">
+    <header>
+        <!-- en tête de page -->
+    
+        <nav  class="navbar">
+            <ul>
+                <li class="actif"><a role="button" href="@Url.Action("Index")">Home</a></li>
+                <li><a role="button" href="@Url.Action("Sondage")">Sondage</a></li>
+                <li><a role="button" href="@Url.Action("Resultat")">Vote</a></li>
+                <li><a role="button" href="@Url.Action("Vote")">Resultat</a></li>
+                <li><a role="button" href="@Url.Action("Suppression")">Supprimer</a></li>
+                <li class="btnRecherche"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
+                <li id="btnRecherche"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></li>
+            </ul>
+        </nav> <!-- menu -->
+    </header>
+    <div>
+
+
+    </div>
+
+    <aside>
+
+        <p id="texteIntroduction">Cum saepe multa, tum memini domi in hemicyclio sedentem, ut solebat, cum et ego essem una et</p>
+        <div>
+            <form action="@Url.Action("SubmitCreationLivre")">
+                <div class="form-group" style="align-items:center; text-align:center; align-content:center" >
+                    <label style="text-align:center" for="exampleInputEmail1">Question</label>
+                    <input style="width:250px" type="text" class="form-control" placeholder="Entrez votre question">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+               
+            </form>
+
+            <form action="@Url.Action("SubmitCreationLivre")">
+                <input type="text" name="Titre" />
+                <input type="text" name="Auteur" />
+                <input type="submit" value="Enregistrer" />
+
+            </form>
+
+
+        </div>
+
+        <div class="formulaire"></div>
+    </aside>
+
+        <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
+        <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+        <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

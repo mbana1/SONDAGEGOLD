@@ -14,32 +14,25 @@
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
-<body>
-    <div id="CorpDepage">
-        <div></div>
-        <h1 class="titre1"> SONDAGEGOLD <img src="~/Images/Logo.PNG"> </h1>
-        <h2 class="titre2">
-            BIENVENUE SUR LE MEILLEUR SITE DE SONDAGE EN LIGNE
-        </h2>
-        <div class="boutons">
 
-            <a type="button" href="http://localhost:50700/Home/Sondange" class="btn btn-dark">
-                CRÉER UN SONDAGE
-            </a>
-            <a type="button" href="http://localhost:50700/Home/Vote" class="btn btn-dark">
-                VOTEZ
-            </a>
-            <a type="button" href="http://localhost:50700/Home/Resultat" class="btn btn-dark">
-                RESULTAT DES VOTES
-            </a>
-        </div>
-        <div class="PiedDePage">
-            
-                Copyright © 2018 sondagegold.com All rights reserved.
+<body id="CorpDepage">
+    <header></header>
+
+    <aside>
+        <div class="logo"> <img  src="~/Images/Capture.PNG" /></div>
+        <p id="texteIntroduction">Cum saepe multa, tum memini domi in hemicyclio sedentem, ut solebat, cum et ego essem una et pauci admodum familiares, in eum sermonem illum incidere qui tum forte multis erat in ore. Meministi enim profecto, Attice, et eo magis, quod P. Sulpicio utebare multum, cum is tribunus plebis capitali odio a Q. Pompeio, qui tum erat consul, dissideret, quocum coniunctissime et amantissime vixerat, quanta esset hominum vel admiratio vel querella. </p>
+        <div class="BoutonMenu1">
+            <a role="button" class="BoutonMenu" href="@Url.Action("Sondage")">Créer un sondage</a>
+            <a role="button" class="BoutonMenu" href="@Url.Action("Resultat")">Voter</a>
+            <a role="button" class="BoutonMenu" href="@Url.Action("Vote")">Consulter le Resultat</a>
+            <a role="button" class="BoutonMenu" href="@Url.Action("Suppression")">Supprimer un sondage</a>
            
         </div>
-    </div>
-    <script src="~/JavaScript/bootstrap.min.js"></script>
+
+
+    </aside>
+
+    <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
 </body>
