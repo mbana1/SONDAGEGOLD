@@ -1,0 +1,65 @@
+﻿@model SONDAGEGOLD.Models.ClasseSondage
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/SondageGoldeCss.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Vote</title>
+</head>
+
+<body id="CorpDepage">
+    <header>
+        <!-- en tête de page -->
+
+        <nav class="navbar">
+
+        </nav> <!-- menu -->
+    </header>
+
+
+    <aside>
+        <div class="formulaire">
+            <form class="form" action="@Url.Action("Index")">
+
+                <div class="mm4">
+                    <label for="Rep4">Lien de vote:</label>
+                    <input name="Rep4" class="Reponse" type="text" value=" @Model.ListeDeliens[0]" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="mm4">
+                    <label for="Rep4">Lien de vote:</label>
+                    <input name="Rep4" class="Reponse" type="text" value="@Model.ListeDeliens[1]" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="mm4">
+                    <label for="Rep4">Lien de vote:</label>
+                    <input name="Rep4" class="Reponse" type="text" value="@Model.ListeDeliens[2]" placeholder="Entrez votre Réponse">
+                </div>
+                <div class="boutonformulaire">
+                    <input class="valider" type="submit" value="OK" />
+                </div>
+
+
+            </form>
+
+
+
+        </div>
+
+
+    </aside>
+
+    <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="~/JavaScript/jquery.js"></script>
+</body>
+
+</html>
+

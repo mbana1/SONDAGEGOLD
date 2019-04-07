@@ -139,6 +139,7 @@
     <Content Include="Views\Home\Resultat.cshtml" />
     <Content Include="Views\Home\Suppression.cshtml" />
     <Content Include="Views\Home\Sondage.cshtml" />
+    <Content Include="Views\Home\SondageInterface.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -14,8 +14,17 @@ namespace SONDAGEGOLD.Controllers
         {
             return View();
         }
+        public ActionResult SondageInterface()
+        {
+           int id= DataAcces.RecupererLeDernierID();
+           ClasseSondage classeSondage= DataAcces.AfficheSondageDansLaVueVote(id);
+
+            return View(classeSondage);
+        }
         public ActionResult Sondage()
         {
+
+
             return View();
         }
 
@@ -29,7 +38,7 @@ namespace SONDAGEGOLD.Controllers
             ClasseSondage classeSondage = new ClasseSondage(0, Question, ListeDeQuestions, liens, choix);
             DataAcces.CreerUnSondage(classeSondage);
 
-            return RedirectToAction("Sondage");
+            return RedirectToAction("SondageInterface");
 
         }
         public ActionResult Vote(int id)

@@ -1,6 +1,13 @@
 ﻿$(function () {
     $("#texteIntroduction").hide().show(2000)
-   
+        
+        
+    $(".BoutonMenu").on("click", function () {
+                alert('Your Message');
+            });
+
+       
+    
     
     //if ($('[name=Rep4]').val() == "  ") { $(".mm1").show() } else { $(".mm1").hide() };
     //console.log($('[name=Rep4]').val())

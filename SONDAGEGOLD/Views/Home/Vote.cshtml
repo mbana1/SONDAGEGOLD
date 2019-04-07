@@ -35,7 +35,7 @@
 
     <aside>
         <div class="formulaire">
-            <form class="form" action="@Url.Action("SubmitCreationLivre")">
+            <form class="form" @*action="@Url.Action("SubmitCreationLivre")"*@>
 
                 <h1>@Model.QuestionDuSondage</h1>
                 @foreach (string reponse in @Model.ListeDereponse)
@@ -47,7 +47,7 @@
                         </label>
                     </div>
                 }
-                
+
                 <div class="boutonformulaire">
                     <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />
                 </div>
@@ -65,6 +65,7 @@
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+    <script src="~/JavaScript/jquery.js"></script>
 </body>
 
 </html>
