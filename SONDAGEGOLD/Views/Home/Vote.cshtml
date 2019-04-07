@@ -1,4 +1,4 @@
-﻿
+﻿@model SONDAGEGOLD.Models.ClasseSondage
 @{
     Layout = null;
 }
@@ -37,38 +37,17 @@
         <div class="formulaire">
             <form class="form" action="@Url.Action("SubmitCreationLivre")">
 
-                <h1>Question</h1>
-                <div class="">
-                    <input name="checkbox1" class="" type="checkbox" id="checkbox">
-                    <label>
-                        Réponse N°1
-                    </label>
-                </div>
-                <div class="">
-                    <input name="checkbox2" class="" type="checkbox" id="checkbox">
-                    <label>
-                        Réponse N°2
-                    </label>
-                </div>
-                <div class="">
-                    <input name="checkbox3" class="" type="checkbox" id="checkbox">
-                    <label>
-                        Réponse N°3
-                    </label>
-                </div>
-                <div class="">
-                    <input name="checkbox4" class="" type="checkbox" id="checkbox">
-                    <label>
-                        Réponse N°4
-                    </label>
-                </div>
-                <div class="">
-                    <input name="checkbox5" class="" type="checkbox" id="checkbox">
-                    <label>
-                        Réponse N°5
-                    </label>
-
-                </div>
+                <h1>@Model.QuestionDuSondage</h1>
+                @foreach (string reponse in @Model.ListeDereponse)
+                {
+                    <div class="">
+                        <input name="checkbox1" class="" type="checkbox" id="checkbox">
+                        <label>
+                            @reponse
+                        </label>
+                    </div>
+                }
+                
                 <div class="boutonformulaire">
                     <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />
                 </div>
