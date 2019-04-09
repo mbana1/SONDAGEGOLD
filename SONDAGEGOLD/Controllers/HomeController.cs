@@ -35,7 +35,7 @@ namespace SONDAGEGOLD.Controllers
 
         public ActionResult CreationSondage(string Question, string Rep1, string Rep2, string Rep3, string Rep4, string Rep5, string CheckBox)
         {
-            List<string> ListeDeQuestions = ClasseSondage.GetlisteDeReponses(Rep1, Rep2, Rep3, Rep4, Rep5);
+            List<ReponseSondage> ListeDeQuestions = ClasseSondage.GetlisteDeReponses(Rep1, Rep2, Rep3, Rep4, Rep5);
 
             string liens = "lien1";
 

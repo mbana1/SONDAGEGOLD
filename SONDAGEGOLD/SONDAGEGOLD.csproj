@@ -118,6 +118,7 @@
     <Compile Include="Models\ClasseSondage.cs" />
     <Compile Include="Models\DataAcces.cs" />
     <Compile Include="Models\FonctionUtiles.cs" />
+    <Compile Include="Models\ReponseSondage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

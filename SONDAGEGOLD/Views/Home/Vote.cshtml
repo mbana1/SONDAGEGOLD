@@ -40,23 +40,23 @@
                 <h1>@Model.QuestionDuSondage</h1>
 
 
-                @for (int i = 0; i < @Model.ListeDereponse.Count; i++)
+                @for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
                 {
                     <div class="">
-                        <input name="@i" class="" type="checkbox" id="checkbox">
+                        <input name="rep @i" value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox" id="checkbox">
                         <label>
-                            @Model.ListeDereponse[@i]
+                            @Model.ListeDeReponse[@i].Reponse
                         </label>
 
                     </div>
                 }
-
-                @for (int i = 0; i < @Model.ListeDereponse.Count; i++)
+               
+                @for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
                 {
                     <fieldset id="group2">
-                        <input type="radio" value="@i" name="reponseID">
+                        <input type="radio" value="@Model.ListeDeReponse[@i].IDreponse" name="reponseID">
                         <label>
-                        @Model.ListeDereponse[@i]
+                            @Model.ListeDeReponse[@i].Reponse
                         </label>
                     </fieldset>
                 }

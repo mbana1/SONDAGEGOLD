@@ -73,7 +73,7 @@ namespace SONDAGEGOLD.Models
         {
             
 
-            foreach (string reponse in sondage.ListeDereponse)
+            foreach (ReponseSondage reponse in sondage.ListeDeReponse)
             {
                 const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
                 SqlConnection connection = new SqlConnection(cheminBase);
@@ -82,7 +82,7 @@ namespace SONDAGEGOLD.Models
                 SqlCommand TableReponse = new SqlCommand("INSERT INTO Reponse (FKIDSondage,Reponses) VALUES (@FKIDSondage,@Reponses)", connection);
 
                 TableReponse.Parameters.AddWithValue("@FKIDSondage", fkid);
-                TableReponse.Parameters.AddWithValue("@Reponses", reponse);
+                TableReponse.Parameters.AddWithValue("@Reponses", reponse.Reponse);
                 TableReponse.ExecuteReader();
                 connection.Close();
                 TableReponse.Parameters.Clear();
@@ -138,7 +138,7 @@ namespace SONDAGEGOLD.Models
             connection.Close();
             sondage.Parameters.Clear();
 
-            List<string> Reponses = RecupereListeDereponses(id);
+            List<ReponseSondage> Reponses = RecupereListeDereponses(id);
 
             ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, ClefSupression, choix);
 
@@ -146,7 +146,7 @@ namespace SONDAGEGOLD.Models
             return SondageCourant;
         }
 
-        public static List<string>RecupereListeDereponses(int id)
+        public static List<ReponseSondage> RecupereListeDereponses(int id)
         {
             const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
             SqlConnection connection = new SqlConnection(cheminBase);
@@ -154,23 +154,25 @@ namespace SONDAGEGOLD.Models
 
 
             connection.Open();
-
-            SqlCommand ListeReponses = new SqlCommand("SELECT Reponses FROM Reponse WHERE FKIDSondage=@ID", connection);
+            
+            SqlCommand ListeReponses = new SqlCommand("SELECT* FROM Reponse WHERE FKIDSondage=@ID", connection);
             ListeReponses.Parameters.AddWithValue("@ID", id);
             SqlDataReader datareaderListe = ListeReponses.ExecuteReader();
             datareaderListe.Read();
-            List<string> Reponses = new List<string>();
+            List<ReponseSondage> ListeReponse = new List<ReponseSondage>();
             do
             {
-                string test = datareaderListe.GetString(0);
-                Reponses.Add(test);
+                int idReponse= datareaderListe.GetInt32(0);
+                string Reponse= datareaderListe.GetString(2);
+                ReponseSondage reponseSondage = new ReponseSondage(idReponse, Reponse);
+                ListeReponse.Add(reponseSondage);
             }
             while
             (datareaderListe.Read());
 
             connection.Close();
             ListeReponses.Parameters.Clear();
-            return Reponses;
+            return ListeReponse;
         }
 
     }

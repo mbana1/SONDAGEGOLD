@@ -9,33 +9,35 @@ namespace SONDAGEGOLD.Models
     {
         public int IdSondage { get; private set; }
         public string QuestionDuSondage { get; private set; }
-        public List<string> ListeDereponse { get; private set; }
+        public List<ReponseSondage> ListeDeReponse { get; private set; }
         public string ClefDeSupression{ get; private set; }
         public bool QuestionChoixMultiples { get; private set; }
 
-        public ClasseSondage(int idSondage, string questionDuSondage, List<string> listeDereponse, string clefDeSupression, bool questionChoixMultiples)
+        public ClasseSondage(int idSondage, string questionDuSondage, List<ReponseSondage> listeDereponse, string clefDeSupression, bool questionChoixMultiples)
         {
             IdSondage = idSondage;
             QuestionDuSondage = questionDuSondage;
-            ListeDereponse = listeDereponse;
+            ListeDeReponse = listeDereponse;
             ClefDeSupression = clefDeSupression;
             QuestionChoixMultiples = questionChoixMultiples;
         }
 
-        public static List<string> GetlisteDeReponses(string Rep1, string Rep2, string Rep3, string Rep4, string Rep5)
+        public static List<ReponseSondage> GetlisteDeReponses(string Rep1, string Rep2, string Rep3, string Rep4, string Rep5)
         {
-            List<string> ListeTriee = new List<string>();
+            List<ReponseSondage> ListeTriee = new List<ReponseSondage>();
+
             List<string> ListeNonTriee = new List<string>();
             ListeNonTriee.Add(Rep1);
             ListeNonTriee.Add(Rep2);
             ListeNonTriee.Add(Rep3);
             ListeNonTriee.Add(Rep4);
             ListeNonTriee.Add(Rep5);
-            foreach(string Rep1Value in ListeNonTriee)
+            foreach(string RepValue in ListeNonTriee)
             {
-                if (Rep1Value != "")
+                if (RepValue != "")
                 {
-                    ListeTriee.Add(Rep1Value);
+                    ReponseSondage reponse = new ReponseSondage(0, RepValue);
+                    ListeTriee.Add(reponse);
                 }
             }
             return ListeTriee;
