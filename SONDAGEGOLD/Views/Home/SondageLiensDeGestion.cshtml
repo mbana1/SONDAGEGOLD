@@ -28,24 +28,23 @@
     <aside>
         <div class="formulaire">
             <form class="form" action="@Url.Action("Index")">
-
-                <div class="mm4">
-                    <label for="Rep4">Lien de vote:</label>
-                    @*@Url.Content(Model.ListeDeliens[0])*@
-                    <input name="Rep4" class="Reponse" type="text" value=" @Model.ListeDeliens[0]">
-                </div>
-                <div class="mm4">
-                    <label for="Rep4">Lien de vote:</label>
-                    <input name="Rep4" class="Reponse" type="text" value="@Model.ListeDeliens[1]" >
-                </div>
-                <div class="mm4">
-                    <label for="Rep4">Lien de vote:</label>
-                    <input name="Rep4" class="Reponse" type="text" value="@Model.ListeDeliens[2]" >
-                </div>
-                <div class="boutonformulaire">
-                    <input class="valider" type="submit" value="OK" />
-                </div>
-
+               
+                    <div class="mm4">
+                        <label for="Rep4">Lien de vote:</label>
+                        <input name="Rep4" class="Reponse" type="text" value="@Url.Content(Model.LiendeVote())" placeholder="Entrez votre Réponse">
+                    </div>
+                    <div class="mm4">
+                        <label for="Rep4">Lien de Résultat:</label>
+                        <input name="Rep4" class="Reponse" type="text" value="@Model.LienDeResultat()" placeholder="Entrez votre Réponse">
+                    </div>
+                    <div class="mm4">
+                        <label for="Rep4">Lien de Supression:</label>
+                        <input name="Rep4" class="Reponse" type="text" value="@Model.LienDeSupression()" placeholder="Entrez votre Réponse">
+                    </div>
+                    <div class="boutonformulaire">
+                        <input class="valider" type="submit" value="OK" />
+                    </div>
+                
 
             </form>
 
@@ -63,4 +62,3 @@
 </body>
 
 </html>
-

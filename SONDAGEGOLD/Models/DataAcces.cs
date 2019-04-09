@@ -8,57 +8,67 @@ namespace SONDAGEGOLD.Models
 {
     public class DataAcces
     {
-        public static void CreerUnSondage(ClasseSondage Sondage)
+        const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
+        public static int CreerUnSondage(ClasseSondage Sondage)
         {
-            const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
-            SqlConnection connection = new SqlConnection(cheminBase);
-
-            connection.Open();
-
-            SqlCommand TableSondage = new SqlCommand("INSERT INTO Sondage(Question,ChoixMultiple) VALUES (@Question,@ChoixMultiple)", connection);
-
-            TableSondage.Parameters.AddWithValue("@Question", Sondage.QuestionDuSondage);
-            TableSondage.Parameters.AddWithValue("@ChoixMultiple", Sondage.QuestionChoixMultiples);
-            //TableSondage.Parameters.AddWithValue("@LienDeVote", Sondage.ListeDeliens[0]);
-            //TableSondage.Parameters.AddWithValue("@LienResultat", Sondage.ListeDeliens[1]);
-            //TableSondage.Parameters.AddWithValue("@LienSupression", Sondage.ListeDeliens[2]);
-            TableSondage.ExecuteReader();
-
-           int FKIDsondage= RecupererLeDernierID();
+            int FKIDsondage = InsererLapremierePartieDuSondage(Sondage);
             InsertionReponses(Sondage, FKIDsondage);
             InsertionLiens(FKIDsondage);
+            
 
-            connection.Close();
-            TableSondage.Parameters.Clear();
-
-
+            return FKIDsondage;
         }
-       
-        
 
-        public static int RecupererLeDernierID()
+        public static int InsererLapremierePartieDuSondage(ClasseSondage Sondage)
         {
-            const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
-            SqlConnection connection = new SqlConnection(cheminBase);
+            using (SqlConnection connection = new SqlConnection(cheminBase))
+            {
 
+                connection.Open();
 
+                SqlCommand TableSondage = new SqlCommand("INSERT INTO Sondage(Question,ChoixMultiple) OUTPUT INserted.IDSondage VALUES (@Question,@ChoixMultiple)", connection);
 
-            connection.Open();
+                TableSondage.Parameters.AddWithValue("@Question", Sondage.QuestionDuSondage);
+                TableSondage.Parameters.AddWithValue("@ChoixMultiple", Sondage.QuestionChoixMultiples);
+                int IdDuSondageInsere=(int)TableSondage.ExecuteScalar();
 
-            SqlCommand DernieID = new SqlCommand("SELECT MAX(IDSondage) FROM Sondage", connection);
+                return IdDuSondageInsere;
+
+            }
+            
+           
 
             
-            SqlDataReader datareader = DernieID.ExecuteReader();
 
-            datareader.Read();
 
-            
-            int ID = datareader.GetInt32(0);
-            connection.Close();
-            DernieID.Parameters.Clear();
-            return ID;
+
 
         }
+
+
+        //    public static int RecupererLeDernierID()
+        //{
+        //    const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
+        //    SqlConnection connection = new SqlConnection(cheminBase);
+
+
+
+        //    connection.Open();
+
+        //    SqlCommand DernieID = new SqlCommand("SELECT MAX(IDSondage) FROM Sondage", connection);
+
+            
+        //    SqlDataReader datareader = DernieID.ExecuteReader();
+
+        //    datareader.Read();
+
+            
+        //    int ID = datareader.GetInt32(0);
+        //    connection.Close();
+        //    DernieID.Parameters.Clear();
+        //    return ID;
+
+        //}
         public static void InsertionReponses(ClasseSondage sondage,int fkid)
         {
             
@@ -90,27 +100,24 @@ namespace SONDAGEGOLD.Models
 
 
 
-        public static void InsertionLiens(int fkid)
+        public static String InsertionLiens(int fkid)
         {
-            const int localhost = 50700;
+            //const int localhost = 50700;
             string cleDeSupression=FonctionUtiles.GeneratePassword(10);
-           List<string>lien= ClasseSondage.GetlisteDeliens(fkid, localhost, cleDeSupression);
-            const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
+           
+           
             SqlConnection connection = new SqlConnection(cheminBase);
             connection.Open();
-            SqlCommand LiensSondage = new SqlCommand("UPDATE Sondage SET LienDeVote = @LienDeVote, LienResultat = @LienResultat, LienSupression = @LienSupression WHERE  IDSondage =@ID", connection);
-
-            LiensSondage.Parameters.AddWithValue("@LienDeVote", lien[0]);
-            LiensSondage.Parameters.AddWithValue("@LienResultat", lien[1]);
-            LiensSondage.Parameters.AddWithValue("@LienSupression", lien[2]);
+            SqlCommand LiensSondage = new SqlCommand("UPDATE Sondage SET ClefDeSupression = @ClefDeSupression WHERE  IDSondage =@ID", connection);
+            LiensSondage.Parameters.AddWithValue("@ClefDeSupression", cleDeSupression);
             LiensSondage.Parameters.AddWithValue("@ID", fkid);
-
-            LiensSondage.ExecuteReader();
+            LiensSondage.ExecuteScalar();
                 connection.Close();
             LiensSondage.Parameters.Clear();
+            return cleDeSupression;
         }
 
-        public static ClasseSondage AfficheSondageDansLaVueVote(int id)
+        public static ClasseSondage RecupererSondageEnBDD(int id)
         {
             const string cheminBase = @"Server=.\sqlexpress;Initial Catalog = SONDAGEGOLD; Integrated Security = True";
             SqlConnection connection = new SqlConnection(cheminBase);
@@ -126,13 +133,14 @@ namespace SONDAGEGOLD.Models
             int idSondage= datareader.GetInt32(0);
             string question= datareader.GetString(1);
             bool choix= datareader.GetBoolean(2);
-            List<string> liens= new List<string> { datareader.GetString(3), datareader.GetString(4), datareader.GetString(5) };
+            string ClefSupression= datareader.GetString(3);
+            //List<string> liens= new List<string> { datareader.GetString(3), datareader.GetString(4), datareader.GetString(5) };
             connection.Close();
             sondage.Parameters.Clear();
 
             List<string> Reponses = RecupereListeDereponses(id);
 
-            ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, liens, choix);
+            ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, ClefSupression, choix);
 
            
             return SondageCourant;

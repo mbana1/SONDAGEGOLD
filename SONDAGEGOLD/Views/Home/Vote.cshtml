@@ -38,15 +38,36 @@
             <form class="form" @*action="@Url.Action("SubmitCreationLivre")"*@>
 
                 <h1>@Model.QuestionDuSondage</h1>
-                @foreach (string reponse in @Model.ListeDereponse)
+
+
+                @for (int i = 0; i < @Model.ListeDereponse.Count; i++)
                 {
                     <div class="">
-                        <input name="checkbox1" class="" type="checkbox" id="checkbox">
+                        <input name="@i" class="" type="checkbox" id="checkbox">
                         <label>
-                            @reponse
+                            @Model.ListeDereponse[@i]
                         </label>
+
                     </div>
                 }
+
+                @for (int i = 0; i < @Model.ListeDereponse.Count; i++)
+                {
+                    <fieldset id="group2">
+                        <input type="radio" value="@i" name="reponseID">
+                        <label>
+                        @Model.ListeDereponse[@i]
+                        </label>
+                    </fieldset>
+                }
+
+
+
+
+
+
+
+                <input type="hidden" name="IDsondageCourant" value="@Model.IdSondage" />
 
                 <div class="boutonformulaire">
                     <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />

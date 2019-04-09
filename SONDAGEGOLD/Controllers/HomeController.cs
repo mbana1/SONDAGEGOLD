@@ -14,12 +14,17 @@ namespace SONDAGEGOLD.Controllers
         {
             return View();
         }
-        public ActionResult SondageInterface()
+        public ActionResult SondageLiensDeGestion(int id,string Clef)
         {
-           int id= DataAcces.RecupererLeDernierID();
-           ClasseSondage classeSondage= DataAcces.AfficheSondageDansLaVueVote(id);
 
-            return View(classeSondage);
+           ClasseSondage classeSondage= DataAcces.RecupererSondageEnBDD(id);
+           if(classeSondage.ClefDeSupression==Clef)
+            {
+                return View(classeSondage);
+
+            }
+
+            return View();
         }
         public ActionResult Sondage()
         {
@@ -31,22 +36,26 @@ namespace SONDAGEGOLD.Controllers
         public ActionResult CreationSondage(string Question, string Rep1, string Rep2, string Rep3, string Rep4, string Rep5, string CheckBox)
         {
             List<string> ListeDeQuestions = ClasseSondage.GetlisteDeReponses(Rep1, Rep2, Rep3, Rep4, Rep5);
-            
-            List<string> liens = new List<string> { "lien1", "lien2", "lien3" };
+
+            string liens = "lien1";
 
             bool choix = Choixmultiple(CheckBox);
             ClasseSondage classeSondage = new ClasseSondage(0, Question, ListeDeQuestions, liens, choix);
-            DataAcces.CreerUnSondage(classeSondage);
 
-            return RedirectToAction("SondageInterface");
+            int IDSondage= DataAcces.CreerUnSondage(classeSondage);
+            ClasseSondage SondageCourant = DataAcces.RecupererSondageEnBDD(IDSondage);
+            //on écrit new pius le nom du parametre du controller qu'on aimerais ateindre = à la valeur qu'on aimerais intégrer
+            return RedirectToAction("SondageLiensDeGestion", new { id = IDSondage, Clef= SondageCourant.ClefDeSupression });
 
         }
         public ActionResult Vote(int id)
         {
-            
+            return View(DataAcces.RecupererSondageEnBDD(id));
+        }
+        public ActionResult EnregistrementVote(int id,List<string> votes)
+        {
 
-
-            return View(DataAcces.AfficheSondageDansLaVueVote(id));
+            return View();
         }
         public ActionResult Resultat()
         {

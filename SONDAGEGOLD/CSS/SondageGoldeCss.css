@@ -97,6 +97,11 @@ label {
     margin-right: 20px;
 }
 
+
+
+
+
+
 .Reponse:hover, .question:hover {
         border: 2px solid blue;
 }
@@ -130,6 +135,7 @@ label {
     border: solid 2px;
 }
 footer {
+    position:absolute;
     text-align: center;
     bottom: 0;
     width: 100%;

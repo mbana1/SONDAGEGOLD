@@ -116,7 +116,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ClasseSondage.cs" />
-    <Compile Include="Models\Classteste.cs" />
     <Compile Include="Models\DataAcces.cs" />
     <Compile Include="Models\FonctionUtiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -140,6 +139,7 @@
     <Content Include="Views\Home\Suppression.cshtml" />
     <Content Include="Views\Home\Sondage.cshtml" />
     <Content Include="Views\Home\SondageInterface.cshtml" />
+    <Content Include="Views\Home\SondageLiensDeGestion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

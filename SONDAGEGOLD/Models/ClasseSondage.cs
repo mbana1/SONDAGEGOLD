@@ -10,15 +10,15 @@ namespace SONDAGEGOLD.Models
         public int IdSondage { get; private set; }
         public string QuestionDuSondage { get; private set; }
         public List<string> ListeDereponse { get; private set; }
-        public List<string> ListeDeliens { get; private set; }
+        public string ClefDeSupression{ get; private set; }
         public bool QuestionChoixMultiples { get; private set; }
 
-        public ClasseSondage(int idSondage, string questionDuSondage, List<string> listeDereponse, List<string> listeDeliens, bool questionChoixMultiples)
+        public ClasseSondage(int idSondage, string questionDuSondage, List<string> listeDereponse, string clefDeSupression, bool questionChoixMultiples)
         {
             IdSondage = idSondage;
             QuestionDuSondage = questionDuSondage;
             ListeDereponse = listeDereponse;
-            ListeDeliens = listeDeliens;
+            ClefDeSupression = clefDeSupression;
             QuestionChoixMultiples = questionChoixMultiples;
         }
 
@@ -41,19 +41,41 @@ namespace SONDAGEGOLD.Models
             return ListeTriee;
         }
 
-        public static List<string> GetlisteDeliens(int id,int num,string CleDeSupression)
+        //public static List<string> GetlisteDeliens(int id,int num,string CleDeSupression)
+        //{
+        //    string LienDeVote = "http://localhost:" + num + "/Home/Vote?id=" + id;
+        //    string LienDeResultat = "http://localhost:" + num + "/Home/Resultat?id=" + id;
+
+
+        //    string LienDeSupression = "http://localhost:" + num + "/Home/Supression?id=" + id+"&"+"Clef="+ CleDeSupression;
+        //    List<string> ListeDeliens = new List<string>();
+        //    ListeDeliens.Add(LienDeVote);
+        //    ListeDeliens.Add(LienDeResultat);
+        //    ListeDeliens.Add(LienDeSupression);
+        //    return ListeDeliens;
+        //}
+
+        public string LiendeVote()
         {
-            string LienDeVote = "http://localhost:" + num + "/Home/Vote?id=" + id;
-            string LienDeResultat = "http://localhost:" + num + "/Home/Resultat?id=" + id;
-
-
-            string LienDeSupression = "http://localhost:" + num + "/Home/Supression?id=" + id+"&"+"Clef="+ CleDeSupression;
-            List<string> ListeDeliens = new List<string>();
-            ListeDeliens.Add(LienDeVote);
-            ListeDeliens.Add(LienDeResultat);
-            ListeDeliens.Add(LienDeSupression);
-            return ListeDeliens;
+            string LienDeVote = "~/Home/Vote?id=" + this.IdSondage;
+           
+            return LienDeVote;
         }
+
+        public string LienDeResultat()
+        {
+            string LienDeResultat = "~/Home/Resultat?id=" + this.IdSondage;
+
+            return LienDeResultat;
+        }
+
+        public string LienDeSupression()
+        {
+            string LienDeSupression ="/Home/Supression?id=" + this.IdSondage + "&" + "Clef=" + this.ClefDeSupression.Trim();
+
+            return LienDeSupression;
+        }
+
 
     }
 
