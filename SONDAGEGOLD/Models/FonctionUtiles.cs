@@ -26,6 +26,26 @@ namespace SONDAGEGOLD.Models
                 Password += Chars[rnd.Next(Chars.Length)];
             return Password;
         }
+        public static List<string> GetlisteDeReponses(string Rep1, string Rep2, string Rep3, string Rep4, string Rep5)
+        {
+            List<string> ListeTriee = new List<string>();
+
+            List<string> ListeNonTriee = new List<string>();
+            ListeNonTriee.Add(Rep1);
+            ListeNonTriee.Add(Rep2);
+            ListeNonTriee.Add(Rep3);
+            ListeNonTriee.Add(Rep4);
+            ListeNonTriee.Add(Rep5);
+            foreach (string RepValue in ListeNonTriee)
+            {
+               if (RepValue !=null)
+               {
+                 
+                  ListeTriee.Add(RepValue);
+                }
+            }
+            return ListeTriee;
+        }
 
     }
 }

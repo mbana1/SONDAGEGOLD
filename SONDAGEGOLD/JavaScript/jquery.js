@@ -2,25 +2,45 @@
     $("#texteIntroduction").hide().show(2000)
         
         
-    $(".BoutonMenu").on("click", function () {
-                alert('Your Message');
-            });
+    //$(".BoutonMenu").on("click", function () {
+      
+        
+    //    $("#dialog").dialog();
+    //});
 
-       
+    //$(function () {
+    //    $("#dialog").dialog();
+    //});
     
     
-    //if ($('[name=Rep4]').val() == "  ") { $(".mm1").show() } else { $(".mm1").hide() };
-    //console.log($('[name=Rep4]').val())
 
-    //    (":input[@name='Rep2']").hide()
+    //function afficherPopupInformation(message) {
+    //    // crée la division qui sera convertie en popup
+    //    $('body').append('<div id="popupinformation" title="Information"></div>');
+    //    $("#popupinformation").html(message);
 
-    //$('input').val().empty()(function () { $('.mm').hide() });
-    //if ($["name=checkbox3"].val() == "") {
-    //    $('.mm').hide();
+    //    // transforme la division en popup
+    //    var popup = $("#popupinformation").dialog({
+    //        autoOpen: true,
+    //        width: 400,
+    //        dialogClass: 'dialogstyleperso',
+    //        buttons: [
+    //            {
+    //                text: "OK",
+    //                "class": 'ui-state-information',
+    //                click: function () {
+    //                    $(this).dialog("close");
+    //                    $('#popupinformation').remove();
+    //                }
+    //            }
+    //        ]
+    //    });
 
-    //}
-    //else {
-    //    $('.mm').show();
+    //    // ajouter le style à la barre de titre
+    //    // note : on n'utilise pas .dialogClass dans la définition de la boîte de dialogue car mettrait tout le fond en couleur
+    //    $("#popupinformation").prev().addClass('ui-state-information');
+
+    //    return popup;
     //}
 
 });

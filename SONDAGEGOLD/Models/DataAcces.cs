@@ -26,10 +26,11 @@ namespace SONDAGEGOLD.Models
 
                 connection.Open();
 
-                SqlCommand TableSondage = new SqlCommand("INSERT INTO Sondage(Question,ChoixMultiple) OUTPUT INserted.IDSondage VALUES (@Question,@ChoixMultiple)", connection);
+                SqlCommand TableSondage = new SqlCommand("INSERT INTO Sondage(Question,ChoixMultiple,NombreDeVotants) OUTPUT INserted.IDSondage VALUES (@Question,@ChoixMultiple,@NombreDeVotant)", connection);
 
                 TableSondage.Parameters.AddWithValue("@Question", Sondage.QuestionDuSondage);
                 TableSondage.Parameters.AddWithValue("@ChoixMultiple", Sondage.QuestionChoixMultiples);
+                TableSondage.Parameters.AddWithValue("@NombreDeVotant", Sondage.NombreDeVotant);
                 int IdDuSondageInsere=(int)TableSondage.ExecuteScalar();
 
                 return IdDuSondageInsere;
@@ -79,10 +80,11 @@ namespace SONDAGEGOLD.Models
                 SqlConnection connection = new SqlConnection(cheminBase);
 
                 connection.Open();
-                SqlCommand TableReponse = new SqlCommand("INSERT INTO Reponse (FKIDSondage,Reponses) VALUES (@FKIDSondage,@Reponses)", connection);
+                SqlCommand TableReponse = new SqlCommand("INSERT INTO Reponse (FKIDSondage,Reponses,NombreDeVote) VALUES (@FKIDSondage,@Reponses,@NombreDeVote)", connection);
 
                 TableReponse.Parameters.AddWithValue("@FKIDSondage", fkid);
                 TableReponse.Parameters.AddWithValue("@Reponses", reponse.Reponse);
+                TableReponse.Parameters.AddWithValue("@NombreDeVote", reponse.NombreDeVote);
                 TableReponse.ExecuteReader();
                 connection.Close();
                 TableReponse.Parameters.Clear();
@@ -134,13 +136,14 @@ namespace SONDAGEGOLD.Models
             string question= datareader.GetString(1);
             bool choix= datareader.GetBoolean(2);
             string ClefSupression= datareader.GetString(3);
+            int NombreDeVotant = datareader.GetInt32(4);
             //List<string> liens= new List<string> { datareader.GetString(3), datareader.GetString(4), datareader.GetString(5) };
             connection.Close();
             sondage.Parameters.Clear();
 
             List<ReponseSondage> Reponses = RecupereListeDereponses(id);
 
-            ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, ClefSupression, choix);
+            ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, ClefSupression, choix, NombreDeVotant);
 
            
             return SondageCourant;
@@ -164,7 +167,8 @@ namespace SONDAGEGOLD.Models
             {
                 int idReponse= datareaderListe.GetInt32(0);
                 string Reponse= datareaderListe.GetString(2);
-                ReponseSondage reponseSondage = new ReponseSondage(idReponse, Reponse);
+                int NombreDeVote = datareaderListe.GetInt32(3);
+                ReponseSondage reponseSondage = new ReponseSondage(idReponse, Reponse, NombreDeVote);
                 ListeReponse.Add(reponseSondage);
             }
             while
@@ -174,7 +178,43 @@ namespace SONDAGEGOLD.Models
             ListeReponses.Parameters.Clear();
             return ListeReponse;
         }
+        public static void InsertionResultatDuVote(int id, List<string> ListID)
+        {
+            InsertionNombreDeVotant(id);
+            InsertionChoixDeVote(ListID);
+           
+        }
+        public static void InsertionNombreDeVotant(int id)
+        {
 
+            SqlConnection connection = new SqlConnection(cheminBase);
+            connection.Open();
+            SqlCommand LiensSondage = new SqlCommand("UPDATE Sondage SET NombreDeVotants = NombreDeVotants + 1 WHERE IDSondage =@ID ", connection);
+            LiensSondage.Parameters.AddWithValue("@ID", id);
+            LiensSondage.ExecuteScalar();
+            connection.Close();
+            LiensSondage.Parameters.Clear();
+        }
+        public static void InsertionChoixDeVote(List<string>ListID)
+        {
+            SqlConnection connection = new SqlConnection(cheminBase);
+            connection.Open();
+            foreach (string id in ListID)
+            {
+
+                
+                SqlCommand LiensSondage = new SqlCommand("UPDATE Reponse SET NombreDeVote = NombreDeVote + 1 WHERE IDReponse =@ID ", connection);
+                LiensSondage.Parameters.AddWithValue("@ID", id);
+                LiensSondage.ExecuteNonQuery ();
+                
+
+
+
+            }
+            connection.Close();
+            
+
+        }
     }
-
+    
 }

@@ -10,16 +10,18 @@ namespace SONDAGEGOLD.Models
         public int IdSondage { get; private set; }
         public string QuestionDuSondage { get; private set; }
         public List<ReponseSondage> ListeDeReponse { get; private set; }
-        public string ClefDeSupression{ get; private set; }
+        public string ClefDeSupression { get; private set; }
         public bool QuestionChoixMultiples { get; private set; }
-
-        public ClasseSondage(int idSondage, string questionDuSondage, List<ReponseSondage> listeDereponse, string clefDeSupression, bool questionChoixMultiples)
+        public int NombreDeVotant { get; private set; }
+      
+        public ClasseSondage(int idSondage, string questionDuSondage, List<ReponseSondage> listeDeReponse, string clefDeSupression, bool questionChoixMultiples, int nombreDeVotant)
         {
             IdSondage = idSondage;
             QuestionDuSondage = questionDuSondage;
-            ListeDeReponse = listeDereponse;
+            ListeDeReponse = listeDeReponse;
             ClefDeSupression = clefDeSupression;
             QuestionChoixMultiples = questionChoixMultiples;
+            NombreDeVotant = nombreDeVotant;
         }
 
         public static List<ReponseSondage> GetlisteDeReponses(string Rep1, string Rep2, string Rep3, string Rep4, string Rep5)
@@ -32,11 +34,11 @@ namespace SONDAGEGOLD.Models
             ListeNonTriee.Add(Rep3);
             ListeNonTriee.Add(Rep4);
             ListeNonTriee.Add(Rep5);
-            foreach(string RepValue in ListeNonTriee)
+            foreach (string RepValue in ListeNonTriee)
             {
                 if (RepValue != "")
                 {
-                    ReponseSondage reponse = new ReponseSondage(0, RepValue);
+                    ReponseSondage reponse = new ReponseSondage(0, RepValue, 0);
                     ListeTriee.Add(reponse);
                 }
             }
@@ -59,35 +61,47 @@ namespace SONDAGEGOLD.Models
 
         public string LiendeVote()
         {
-            string LienDeVote = "~/Home/Vote?id=" + this.IdSondage;
-           
+            string LienDeVote = "http://localhost:50700/Home/Vote?id=" + this.IdSondage;
+
             return LienDeVote;
         }
 
         public string LienDeResultat()
         {
-            string LienDeResultat = "~/Home/Resultat?id=" + this.IdSondage;
+            string LienDeResultat = "http://localhost:50700/Home/Resultat?idsondageCourant=" + this.IdSondage;
 
             return LienDeResultat;
         }
 
         public string LienDeSupression()
         {
-            string LienDeSupression ="/Home/Supression?id=" + this.IdSondage + "&" + "Clef=" + this.ClefDeSupression.Trim();
+            string LienDeSupression = "http://localhost:50700/Home/Supression?id=" + this.IdSondage + "&" + "Clef=" + this.ClefDeSupression.Trim();
 
             return LienDeSupression;
         }
 
 
+
+        public int NombreTotalDeVote()
+        {
+            int TotalVote=0;
+            foreach (ReponseSondage vote in this.ListeDeReponse)
+            {
+                TotalVote = TotalVote+ vote.NombreDeVote;
+
+
+
+
+            }
+
+
+                return TotalVote;
+        }
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
-
 
 }

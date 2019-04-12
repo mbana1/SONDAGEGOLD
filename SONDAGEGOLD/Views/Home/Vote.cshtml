@@ -35,33 +35,41 @@
 
     <aside>
         <div class="formulaire">
-            <form class="form" @*action="@Url.Action("SubmitCreationLivre")"*@>
+            <form class="form" action="@Url.Action("EnregistrerVote")">
 
                 <h1>@Model.QuestionDuSondage</h1>
-
-
-                @for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
+                @if (@Model.QuestionChoixMultiples == true)
                 {
-                    <div class="">
-                        <input name="rep @i" value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox" id="checkbox">
-                        <label>
-                            @Model.ListeDeReponse[@i].Reponse
-                        </label>
 
-                    </div>
+                    for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
+                    {
+                        string parametre = "id" + @i;
+                        //int unit = 5-@i;
+                        //string parametre1 = "id" + unit;
+                <div class="">
+                    
+                    <input name="@parametre" value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox" id="checkbox">
+                    <label>
+                        @Model.ListeDeReponse[@i].Reponse
+                    </label>
+
+                </div>
+                    }
                 }
-               
-                @for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
+                else
                 {
-                    <fieldset id="group2">
-                        <input type="radio" value="@Model.ListeDeReponse[@i].IDreponse" name="reponseID">
-                        <label>
-                            @Model.ListeDeReponse[@i].Reponse
-                        </label>
-                    </fieldset>
+
+                for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
+                {
+                <fieldset id="group2">
+                    <input type="radio" value="@Model.ListeDeReponse[@i].IDreponse" name="id0">
+                    <label>
+                        @Model.ListeDeReponse[@i].Reponse
+                    </label>
+                </fieldset>
                 }
 
-
+                }
 
 
 
@@ -70,7 +78,7 @@
                 <input type="hidden" name="IDsondageCourant" value="@Model.IdSondage" />
 
                 <div class="boutonformulaire">
-                    <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />
+                    <input class="valider" type="submit" value="Valider le Vote" /> <input class="valider" type="submit" value="Annuler" />
                 </div>
 
 

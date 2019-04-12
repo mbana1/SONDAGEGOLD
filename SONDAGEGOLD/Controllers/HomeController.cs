@@ -40,7 +40,7 @@ namespace SONDAGEGOLD.Controllers
             string liens = "lien1";
 
             bool choix = Choixmultiple(CheckBox);
-            ClasseSondage classeSondage = new ClasseSondage(0, Question, ListeDeQuestions, liens, choix);
+            ClasseSondage classeSondage = new ClasseSondage(0, Question, ListeDeQuestions, liens, choix,0);
 
             int IDSondage= DataAcces.CreerUnSondage(classeSondage);
             ClasseSondage SondageCourant = DataAcces.RecupererSondageEnBDD(IDSondage);
@@ -52,14 +52,34 @@ namespace SONDAGEGOLD.Controllers
         {
             return View(DataAcces.RecupererSondageEnBDD(id));
         }
-        public ActionResult EnregistrementVote(int id,List<string> votes)
+         public ActionResult EnregistrerVote(string id0, string id1, string id2, string id3, string id4,int IDsondageCourant)
         {
 
-            return View();
+
+            //DataAcces.InsertionResultaDuVote();
+           List<string> liste= FonctionUtiles.GetlisteDeReponses(id0, id1, id2, id3, id4);
+
+            DataAcces.InsertionResultatDuVote(IDsondageCourant, liste);
+
+
+
+            return RedirectToAction("Resultat", new { idsondageCourant = IDsondageCourant });
+
+
+          
+
         }
-        public ActionResult Resultat()
+        //public ActionResult EnregistrementVote(int id,List<string> votes)
+        //{
+
+        //    return View();
+        //}
+        public ActionResult Resultat(int idsondageCourant)
         {
-            return View();
+           ClasseSondage sondage= DataAcces.RecupererSondageEnBDD(idsondageCourant);
+           
+
+            return View(sondage);
         }
         public ActionResult Suppression(int id,string Clef)
         {

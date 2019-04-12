@@ -1,4 +1,4 @@
-﻿
+﻿@model SONDAGEGOLD.Models.ClasseSondage
 @{
     Layout = null;
 }
@@ -35,32 +35,41 @@
 
     <aside>
         <div class="formulaire">
-            <h1>Question</h1>
-            
-            <div class="progress barDeprogression ">
-                <label for="Rep2">Reponse N°2:</label>
-                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-            </div>
-            
-           
-            <div class="progress barDeprogression">
-                <label for="Rep2">Reponse N°2:</label>
-                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-            </div>
-            <div class="progress barDeprogression">
-                <label for="Rep2">Reponse N°2:</label>
-                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">30%</div>
-            </div>
-            <div class="progress barDeprogression">
-                <label for="Rep2">Reponse N°2:</label>
-                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+            <h1>@Model.QuestionDuSondage</h1>
+            @for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
+            {
+                string r = @Model.ListeDeReponse[@i].PourcentageDeVote(@Model.NombreDeVotant);
+            <label for="file">@Model.ListeDeReponse[@i].Reponse</label>
+
+                <progress id="file" max="@Model.NombreTotalDeVote()" value="@Model.ListeDeReponse[@i].NombreDeVote">@r </progress>
+
+
+
+
+
+
+
+
+            @*<div class="progress barDeprogression ">
+                <label for="Rep2"> </label>
+                <div class="progress-bar-striped progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5">@r</div>
             </div>
 
 
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                        <span class="sr-only">40% effectué (success)</span>
+                    </div>
+                </div>*@
+
+
+
+
+            }
 
 
         </div>
-</aside>
+    </aside>
 
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
