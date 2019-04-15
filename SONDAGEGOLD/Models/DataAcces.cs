@@ -26,11 +26,13 @@ namespace SONDAGEGOLD.Models
 
                 connection.Open();
 
-                SqlCommand TableSondage = new SqlCommand("INSERT INTO Sondage(Question,ChoixMultiple,NombreDeVotants) OUTPUT INserted.IDSondage VALUES (@Question,@ChoixMultiple,@NombreDeVotant)", connection);
+                SqlCommand TableSondage = new SqlCommand("INSERT INTO Sondage(Question,ChoixMultiple,ClefDeSupression,NombreDeVotants,EtatDuSondage) OUTPUT INserted.IDSondage VALUES (@Question,@ChoixMultiple,@ClefDeSupression,@NombreDeVotant,@EtatDuSondage)", connection);
 
                 TableSondage.Parameters.AddWithValue("@Question", Sondage.QuestionDuSondage);
                 TableSondage.Parameters.AddWithValue("@ChoixMultiple", Sondage.QuestionChoixMultiples);
                 TableSondage.Parameters.AddWithValue("@NombreDeVotant", Sondage.NombreDeVotant);
+                TableSondage.Parameters.AddWithValue("@EtatDuSondage", Sondage.EtatDuSondage);
+                TableSondage.Parameters.AddWithValue("@ClefDeSupression", Sondage.ClefDeSupression);
                 int IdDuSondageInsere=(int)TableSondage.ExecuteScalar();
 
                 return IdDuSondageInsere;
@@ -118,6 +120,17 @@ namespace SONDAGEGOLD.Models
             LiensSondage.Parameters.Clear();
             return cleDeSupression;
         }
+        public static void DesactivationSondage(int id)
+        {
+            SqlConnection connection = new SqlConnection(cheminBase);
+            connection.Open();
+            SqlCommand Desactivation = new SqlCommand("UPDATE Sondage SET EtatDuSondage=@value WHERE  IDSondage =@ID", connection);
+            Desactivation.Parameters.AddWithValue("@ID", id);
+            Desactivation.Parameters.AddWithValue("@value", 0);
+            Desactivation.ExecuteScalar();
+            connection.Close();
+            Desactivation.Parameters.Clear();
+        }
 
         public static ClasseSondage RecupererSondageEnBDD(int id)
         {
@@ -135,15 +148,16 @@ namespace SONDAGEGOLD.Models
             int idSondage= datareader.GetInt32(0);
             string question= datareader.GetString(1);
             bool choix= datareader.GetBoolean(2);
-            string ClefSupression= datareader.GetString(3);
+            string ClefSupression= datareader.GetString(3).Trim();
             int NombreDeVotant = datareader.GetInt32(4);
+            bool EtatDuSondage = datareader.GetBoolean(5);
             //List<string> liens= new List<string> { datareader.GetString(3), datareader.GetString(4), datareader.GetString(5) };
             connection.Close();
             sondage.Parameters.Clear();
 
             List<ReponseSondage> Reponses = RecupereListeDereponses(id);
 
-            ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, ClefSupression, choix, NombreDeVotant);
+            ClasseSondage SondageCourant = new ClasseSondage(idSondage, question, Reponses, ClefSupression, choix, NombreDeVotant, EtatDuSondage);
 
            
             return SondageCourant;

@@ -1,4 +1,4 @@
-﻿@model SONDAGEGOLD.Models.ClasseSondage
+﻿l SONDAGEGOLD.Models.ClasseSondage
 @{
     Layout = null;
 }
@@ -7,7 +7,7 @@
 
 <html>
 <head>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
@@ -40,35 +40,29 @@
     <aside>
 
         <div class="formulaire">
-            <form class="form" action="@Url.Action("CreationSondage")" method="post">
+            <form class="form" action="@Url.Action("")" method="post">
+
+                <fieldset>
+                    <legend>Qualité<abbr title="Ce champ est obligatoire">*</abbr></legend>
+                    <input type="radio" required name="title"  value="Mr"><label for="r1">M.</label>
+                    <input type="radio" required name="title" id="r2" value="Ms"><label for="r2">Mme.</label>
+                </fieldset>
 
                 <h1>Question</h1>
 
-                <input name="Question" class="question" type="text" placeholder="Entrez votre question">
+                <input name="Question" id="r1" class="question" type="text" placeholder="Entrez votre question" >
 
 
                 <div class="mm1">
                     <label for="Rep1">Reponse N°1:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse" required>
                 </div>
                 <div class="mm2">
                     <label for="Rep2">Reponse N°2:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse" required>
                 </div>
 
-                <div class="mm3">
-                    <label for="Rep3">Reponse N°3:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-                <div class="mm4">
-                    <label for="Rep4">Reponse N°4:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-                <div class="mm5">
-                    <label for="Rep5">Reponse N°5:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-                <div class="mm">
+                <div class="mm1">
                     <input name="checkbox" class="" type="checkbox" id="checkbox">
                     <label>
                         Autoriser les Réponses multiples
@@ -76,18 +70,21 @@
                 </div>
 
                 <div class="boutonformulaire">
-                    <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />
+                    <input onclick="afficherPopupInformation" class="valider" type="submit" id="fff" value="Valider le quetionnaire" /> @*<input class="valider" type="submit" value="Annuler" />*@
                 </div>
-                
+
             </form>
         </div>
 
     </aside>
 
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
-
+    <script>
+       
+    </script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/jquery.js"></script>
+    <script src="~/JavaScript/SondageGoldJavaScript.js"></script>
 </body>
 </html>

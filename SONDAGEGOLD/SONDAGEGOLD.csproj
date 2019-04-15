@@ -105,7 +105,8 @@
     <Content Include="JavaScript\bootstrap.bundle.min.js" />
     <Content Include="JavaScript\bootstrap.js" />
     <Content Include="JavaScript\bootstrap.min.js" />
-    <Content Include="JavaScript\jquery.js" />
+    <Content Include="JavaScript\JavaScripttest.js" />
+    <Content Include="JavaScript\jquery-3.3.1.min.js" />
     <Content Include="JavaScript\SondageGoldJavaScript.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -142,6 +143,8 @@
     <Content Include="Views\Home\Sondage.cshtml" />
     <Content Include="Views\Home\SondageInterface.cshtml" />
     <Content Include="Views\Home\SondageLiensDeGestion.cshtml" />
+    <Content Include="Views\Home\VoteDesactiver.cshtml" />
+    <Content Include="Views\Home\teste.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

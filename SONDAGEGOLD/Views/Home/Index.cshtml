@@ -29,26 +29,7 @@
             <a role="button" class="BoutonMenu" href="@Url.Action("Suppression")">Supprimer un sondage</a>
 
         </div>
-        <div id="dialog" title="Boîte de dialogue de base">
-            Cette boîte de dialogue peut être redimensionnée, déplacée et fermée.
-        </div>
 
-        <script>
-            $(function () {
-                $("#dialog").dialog({
-                    modal: true,
-                    buttons: {
-                        "Oui": function () {
-                            $('body').css('background', 'yellow');
-                            $(this).dialog("close");
-                        },
-                        "Non": function () {
-                            $(this).dialog("close");
-                        }
-                    }
-                });
-            });
-        </script>
 
 
 
@@ -56,9 +37,11 @@
 
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
-    
-    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/jquery.js"></script>
+    <script src="~/JavaScript/SondageGoldJavaScript.js"></script>
+    <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
+
+
 </body>
 
 </html>
