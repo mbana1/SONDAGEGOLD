@@ -1,0 +1,54 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+footer {
+    position: relative;
+    text-align: center;
+    bottom: 0;
+    padding-bottom: 0px;
+    width: 100%;
+    color: white;
+    height: 60px;
+    background-color: black;
+}
+
+#myVideo {
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+
+}
+header {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    
+}
+.Logo {
+    position: absolute;
+    text-align: center;
+    margin: 80px 4px 4px 4px;
+    padding: 0px 0px 0px 0px;
+}
+.Introduction {
+    position: absolute;
+    text-align: center;
+    background-color: #8A867F;
+    z-index: 1;
+    height: 200px;
+    top: 300px;
+    width: 100%;
+}
+.CreerSondage {
+ 
+    z-index: 1;
+    height:70px;
+    margin-top:80px;
+}

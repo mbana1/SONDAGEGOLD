@@ -28,7 +28,12 @@
     <aside>
         <div class="formulaire">
             <form class="form" action="@Url.Action("Index")">
-               
+                <p class="Explication">
+                    Votre sondage a bien été enregistré, les liens ci-dessous vous permettrons de gérer votre sondage.
+                    Le lien de vote permettra aux participants que vous avez choisis de voter et si vous leur transmettez le lien de résultat, ils pourront consulter les résultats du vote.
+                    Il est important de garder précieusement le lien de suppression, car il permet de désactiver le sondage bien qu’une consultation des résultats restera toujours possible.
+                </p>
+
                     <div class="mm4">
                         <label for="Rep4">Lien de vote:</label>
                         <input name="Rep4" class="Reponse" type="text" value="@Url.Content(Model.LiendeVote())" placeholder="Entrez votre Réponse">
@@ -42,7 +47,7 @@
                         <input name="Rep4" class="Reponse" type="text" value="@Model.LienDeSupression()" placeholder="Entrez votre Réponse">
                     </div>
                     <div class="boutonformulaire">
-                        <input class="valider" type="submit" value="OK" />
+                        <input class="valider btn btn-primary" type="submit" value="OK" />
                     </div>
                 
 

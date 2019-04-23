@@ -37,38 +37,27 @@
 
     </div>
 
-    <aside>
+    <aside class="aside">
 
         <div class="formulaire">
             <form class="form" action="@Url.Action("CreationSondage")" method="post">
 
                 <h1>Question</h1>
 
-                <input name="Question" class="question" type="text" placeholder="Entrez votre question">
+                <input name="Question" required class="question" type="text" placeholder="Entrez votre question">
 
 
-                <div class="mm1">
+                <div class="mm">
                     <label for="Rep1">Reponse N°1:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-                <div class="mm2">
-                    <label for="Rep2">Reponse N°2:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-
-                <div class="mm3">
-                    <label for="Rep3">Reponse N°3:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-                <div class="mm4">
-                    <label for="Rep4">Reponse N°4:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
-                </div>
-                <div class="mm5">
-                    <label for="Rep5">Reponse N°5:</label>
-                    <input name="Reponse" class="Reponse" type="text" placeholder="Entrez votre Réponse">
+                    <input name="Reponse" required class="Reponse" type="text" placeholder="Entrez votre Réponse">
                 </div>
                 <div class="mm">
+                    <label for="Rep2">Reponse N°2:</label>
+                    <input name="Reponse" class="Reponse" required type="text" placeholder="Entrez votre Réponse">
+                </div>
+               
+                <div class="mm1">
+                   
                     <input name="checkbox" class="" type="checkbox" id="checkbox">
                     <label>
                         Autoriser les Réponses multiples
@@ -76,16 +65,17 @@
                 </div>
 
                 <div class="boutonformulaire">
-                    <input class="valider" type="submit" value="Valider le quetionnaire" /> <input class="valider" type="submit" value="Annuler" />
+                    <input class="SuprimerReponse" type="button" value="Suprimer Des Reponses " />
+                    <input class="valider" type="submit" value="Valider le quetionnaire" />
                 </div>
-                
+
             </form>
         </div>
 
     </aside>
 
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
-
+    <script src="~/JavaScript/SondageGoldJavaScript.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/jquery.js"></script>

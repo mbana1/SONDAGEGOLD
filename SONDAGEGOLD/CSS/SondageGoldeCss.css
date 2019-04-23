@@ -73,8 +73,7 @@ nav li:hover {
     margin: 140px 140px 40px 140px;
     background-color: dimgrey;
     height: 500px;
-  
-    text-align: center;
+  text-align:center;
     border: solid 2px;
     text-decoration: none;
 
@@ -134,11 +133,7 @@ label {
     width: 100px;
     border: solid 2px;
 }
-body{
-padding-top:0px;
-padding-bottom:0px
 
-}
 footer {
     position:relative;
     text-align: center;
@@ -150,9 +145,42 @@ footer {
     background-color: black;
 }
 input:invalid {
-    border: 5px dashed red;
+    border: 1px solid groove;
 }
 
 input:valid {
     border: 1px solid black;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+.bar{
+    
+    -webkit-appearance: none;
+   
+    width: 250px;
+    height: 20px;
+}
+body {
+    display: table;
+    width: 100%;
+    
+}
+#CorpDepage1{background-color:blue;}
+
+footer {
+    display: table-row;
+    height: 100px;
+}
+.Explication {
+    margin-left: 400px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    height: 150px;
+    width: 800px;
+    font-size:20px;
+    
 }

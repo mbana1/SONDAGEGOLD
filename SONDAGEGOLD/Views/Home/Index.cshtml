@@ -7,29 +7,33 @@
 
 <html>
 <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
-    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
-    <link rel="stylesheet" type="text/css" href="~/CSS/SondageGoldeCss.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/SondageGolde.css" />
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
 </head>
 
-<body id="CorpDepage">
-    <header></header>
+<body id="CorpDepage1">
+    <header>
+
+        <img src="~/Images/CaptureLOGO.PNG" height="100" />
+
+    </header>
 
     <aside>
-        <div class="logo"> <img src="~/Images/Capture.PNG" /></div>
-        <p id="texteIntroduction">Cum saepe multa, tum memini domi in hemicyclio sedentem, ut solebat, cum et ego essem una et pauci admodum familiares, in eum sermonem illum incidere qui tum forte multis erat in ore. Meministi enim profecto, Attice, et eo magis, quod P. Sulpicio utebare multum, cum is tribunus plebis capitali odio a Q. Pompeio, qui tum erat consul, dissideret, quocum coniunctissime et amantissime vixerat, quanta esset hominum vel admiratio vel querella. </p>
-        <div class="BoutonMenu1">
-            <a role="button" class="BoutonMenu" href="@Url.Action("Sondage")">Créer un sondage</a>
-            <a role="button" class="BoutonMenu" href="@Url.Action("Resultat")">Voter</a>
-            <a role="button" class="BoutonMenu" href="@Url.Action("Vote")">Consulter le Resultat</a>
-            <a role="button" class="BoutonMenu" href="@Url.Action("Suppression")">Supprimer un sondage</a>
 
+
+
+        <video autoplay muted loop id="myVideo">
+            <source src="~/Images/Traveling%20Speed%20of%20Light%20Backwards%20-%20Free%20HD%20Animation.mp4" type="video/mp4" />
+        </video>
+        <div class="Introduction">
+            <h1> Bienvenue sur le Site SondageGold Le méilleur site de sondage en liegne</h1>
+            <div class="CreerSondage">
+                <a role="button" class="btn btn-primary" href="@Url.Action("Sondage")">Créer un sondage</a>
+
+            </div>
         </div>
-
 
 
 
@@ -37,8 +41,6 @@
 
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
-    <script src="~/JavaScript/jquery.js"></script>
-    <script src="~/JavaScript/SondageGoldJavaScript.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
 
 

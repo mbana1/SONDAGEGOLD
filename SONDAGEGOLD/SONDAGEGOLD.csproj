@@ -28,10 +28,20 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>C:\Users\ozout1\Desktop\testExe\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="NewConnection1-Déploiement" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <Source Path="..\Scripte de BDD\SONDAGEGOLDBDD.sql" Transacted="False" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -97,10 +107,16 @@
     <Content Include="CSS\bootstrap-reboot.min.css" />
     <Content Include="CSS\bootstrap.css" />
     <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="CSS\SondageGolde.css" />
     <Content Include="CSS\SondageGoldeCss.css" />
     <Content Include="Global.asax" />
     <Content Include="Images\Capture.PNG" />
+    <Content Include="Images\CaptureLOGO.PNG" />
+    <Content Include="Images\ciel-etoile-voie-lactee-etoiles-poussiere-espace-dans-univers_33900-83[1].jpg" />
+    <Content Include="Images\Entering The Stronghold Audio Visual Animation HD #2.mp4" />
     <Content Include="Images\Logo.PNG" />
+    <Content Include="Images\SONDAGELOGO.PNG" />
+    <Content Include="Images\Traveling Speed of Light Backwards - Free HD Animation.mp4" />
     <Content Include="JavaScript\bootstrap.bundle.js" />
     <Content Include="JavaScript\bootstrap.bundle.min.js" />
     <Content Include="JavaScript\bootstrap.js" />
@@ -139,12 +155,11 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Vote.cshtml" />
     <Content Include="Views\Home\Resultat.cshtml" />
-    <Content Include="Views\Home\Suppression.cshtml" />
     <Content Include="Views\Home\Sondage.cshtml" />
     <Content Include="Views\Home\SondageInterface.cshtml" />
     <Content Include="Views\Home\SondageLiensDeGestion.cshtml" />
     <Content Include="Views\Home\VoteDesactiver.cshtml" />
-    <Content Include="Views\Home\teste.cshtml" />
+    <Content Include="Views\Home\DejaVoter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

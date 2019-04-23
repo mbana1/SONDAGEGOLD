@@ -17,7 +17,7 @@ namespace SONDAGEGOLD.Models
         private const int IDsondagePartDefaut = 0;
         private const int NombreDeVotantParDefaut = 0;
         private const bool EtatDuSondageParDefaut = true;
-        private const string ClefDeSupretionParDefaut="clesParDefaut";
+        private const string ClefDeSupretionParDefaut="ClesParDefaut";
 
         
         
@@ -81,13 +81,12 @@ namespace SONDAGEGOLD.Models
             int TotalVote=0;
             foreach (ReponseSondage vote in this.ListeDeReponse)
             {
-                TotalVote = TotalVote+ vote.NombreDeVote;
+                TotalVote = TotalVote + vote.NombreDeVote;
 
 
 
 
             }
-
 
                 return TotalVote;
         }

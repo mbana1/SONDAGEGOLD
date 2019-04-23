@@ -14,11 +14,33 @@ namespace SONDAGEGOLD.Controllers
         {
             return View();
         }
-        public ActionResult SondageLiensDeGestion(int id,string Clef)
+        public ActionResult Sondage()
         {
 
-           ClasseSondage classeSondage= DataAcces.RecupererSondageEnBDD(id);
-           if(classeSondage.ClefDeSupression==Clef)
+
+            return View();
+        }
+        public ActionResult CreationSondage(string Question,List<string>Reponse, string CheckBox)
+        {
+            List<ReponseSondage> ListeDeQuestions = ClasseSondage.GetlisteDeReponses(Reponse);
+
+
+
+            bool choix =FonctionUtiles.Choixmultiple(CheckBox);
+            ClasseSondage classeSondage = new ClasseSondage(Question,ListeDeQuestions,choix);
+
+
+            int IDSondage = DataAcces.CreerUnSondage(classeSondage);
+            ClasseSondage SondageCourant = DataAcces.RecupererSondageEnBDD(IDSondage);
+            //on écrit new pius le nom du parametre du controller qu'on aimerais ateindre = à la valeur qu'on aimerais intégrer
+            return RedirectToAction("SondageLiensDeGestion", new { id = IDSondage, Clef = SondageCourant.ClefDeSupression });
+
+        }
+        public ActionResult SondageLiensDeGestion(int id, string Clef)
+        {
+
+            ClasseSondage classeSondage = DataAcces.RecupererSondageEnBDD(id);
+            if (classeSondage.ClefDeSupression == Clef)
             {
                 return View(classeSondage);
 
@@ -26,47 +48,38 @@ namespace SONDAGEGOLD.Controllers
 
             return View();
         }
-        public ActionResult Sondage()
-        {
-
-
-            return View();
-        }
-
-        public ActionResult CreationSondage(string Question,List<string>Reponse, string CheckBox)
-        {
-            List<ReponseSondage> ListeDeQuestions = ClasseSondage.GetlisteDeReponses(Reponse);
-
-          
-
-            bool choix = Choixmultiple(CheckBox);
-            ClasseSondage classeSondage = new ClasseSondage(Question, ListeDeQuestions,choix);
-
-            
-            int IDSondage= DataAcces.CreerUnSondage(classeSondage);
-            ClasseSondage SondageCourant = DataAcces.RecupererSondageEnBDD(IDSondage);
-            //on écrit new pius le nom du parametre du controller qu'on aimerais ateindre = à la valeur qu'on aimerais intégrer
-            return RedirectToAction("SondageLiensDeGestion", new { id = IDSondage, Clef= SondageCourant.ClefDeSupression });
-
-        }
         public ActionResult Vote(int id)
         {
-         
+
             if (DataAcces.RecupererSondageEnBDD(id).EtatDuSondage == true)
             {
+                if (FonctionUtiles.VerifieSiUtilisateurDejaVoter(Request.Cookies, id))
+                {
 
-                return View(DataAcces.RecupererSondageEnBDD(id));
+                    return RedirectToAction("DejaVoter", new { idsondageCourant = id });
 
 
+                }
+                else
+                {
 
+                    return View(DataAcces.RecupererSondageEnBDD(id));
+
+                    //Response.Cookies.Add(Operation.CreateUserCookie(IDQuestion));
+                }
+              
             }
             else
-            { 
-                    return RedirectToAction("VoteDesactiver", new { idsondageCourant = id });
+            {
+                return RedirectToAction("VoteDesactiver", new { idsondageCourant = id });
             }
-           
+
 
         }
+        
+       
+
+       
         public ActionResult VoteDesactiver(int idsondageCourant)
         {
 
@@ -81,7 +94,7 @@ namespace SONDAGEGOLD.Controllers
 
             DataAcces.InsertionResultatDuVote(IDsondageCourant, liste);
 
-
+            Response.Cookies.Add(FonctionUtiles.CreationCookiesUtilisateur(IDsondageCourant));
 
             return RedirectToAction("Resultat", new { idsondageCourant = IDsondageCourant });
 
@@ -89,13 +102,14 @@ namespace SONDAGEGOLD.Controllers
           
 
         }
-        public ActionResult teste()
+        public ActionResult DejaVoter()
         {
-          
+
 
 
             return View();
         }
+       
         public ActionResult Resultat(int idsondageCourant)
         {
            ClasseSondage sondage= DataAcces.RecupererSondageEnBDD(idsondageCourant);
@@ -119,17 +133,7 @@ namespace SONDAGEGOLD.Controllers
         }
 
 
-        public bool Choixmultiple(string choix)
-        {
-            bool Choix=false;
-            if (choix == "on")
-            {
-                Choix = true;
-
-            }
-            
-            return Choix;
-        }
+       
     }
    
 

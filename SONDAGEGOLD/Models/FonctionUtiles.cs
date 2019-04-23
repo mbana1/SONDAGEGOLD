@@ -40,6 +40,30 @@ namespace SONDAGEGOLD.Models
             }
             return ListeTriee;
         }
+        public static HttpCookie CreationCookiesUtilisateur(int id)
+        {
 
+            HttpCookie httpCookie = new HttpCookie("UserCookies" + id);
+            httpCookie.Value = "";
+            httpCookie.Expires = DateTime.MaxValue;
+            return httpCookie;
+        }
+        public static bool VerifieSiUtilisateurDejaVoter(HttpCookieCollection cookies, int idQuestion)
+        {
+            return cookies["UserCookies" + idQuestion] != null;
+        }
+
+    
+    public static bool Choixmultiple(string choix)
+        {
+            bool Choix = false;
+            if (choix == "on")
+            {
+                Choix = true;
+
+            }
+
+            return Choix;
+        }
     }
 }
