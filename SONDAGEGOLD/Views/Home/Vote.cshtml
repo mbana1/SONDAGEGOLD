@@ -7,6 +7,7 @@
 
 <html>
 <head>
+   
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.min.css" />
     <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap-reboot.css.map" />
@@ -48,7 +49,7 @@
                         //string parametre1 = "id" + unit;
                         <div class="">
 
-                            <input name="Idliste" id="reponse" value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox" id="checkbox">
+                            <input name="Idliste" id="reponse" required value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox">
                             <label>
                                 @Model.ListeDeReponse[@i].Reponse
                             </label>
@@ -78,7 +79,7 @@
                 <input type="hidden" name="IDsondageCourant" value="@Model.IdSondage" />
 
                 <div class="boutonformulaire">
-                    <input class="valider" onclick="afficherPopupAvertissement(teste)" id="submitFormulaire" type="submit" value="Valider le Vote" /> <input class="valider" type="submit" value="Annuler" />
+                    <input class="valider" id="submitFormulaire" type="submit" value="Valider le Vote" /> <input class="valider" type="submit" value="Annuler" />
                 </div>
 
 
@@ -90,38 +91,15 @@
 
 
     </aside>
-   <script>
-       //function afficherPopupAvertissement(message) {
-       //    // crée la division qui sera convertie en popup 
-       //    $('body').append('<div id="popupavertissement" title="Avertissement"></div>');
-       //    $("#popupavertissement").html(message);
+    <script>
 
-       //    // transforme la division en popup
-       //    var popup = $("#popupavertissement").dialog({
-       //        autoOpen: true,
-       //        width: 400,
-       //        dialogClass: 'dialogstyleperso',
-       //        buttons: [
-       //            {
-       //                text: "OK",
-       //                "class": 'ui-state-warning',
-       //                click: function () {
-       //                    $(this).dialog("close");
-       //                    $('#popupavertissement').remove();
-       //                }
-       //            }
-       //        ]
-       //    });
-
-       //    $("#popupavertissement").prev().addClass('ui-state-warning');
-
-       //    return popup;
-       //}
-   </script>
+    </script>
     <footer>Copyright © 2018 sondagegold.com All rights reserved</footer>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
     <script src="~/JavaScript/bootstrap.bundle.min.js"></script>
-    <script src="~/JavaScript/jquery.js"></script>
+   
+   
+ 
 </body>
 
 </html>
