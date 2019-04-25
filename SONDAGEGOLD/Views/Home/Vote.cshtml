@@ -49,7 +49,7 @@
                         //string parametre1 = "id" + unit;
                         <div class="">
 
-                            <input name="Idliste" id="reponse" required value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox">
+                            <input name="Idliste" id="reponse"  value="@Model.ListeDeReponse[@i].IDreponse" class="" type="checkbox">
                             <label>
                                 @Model.ListeDeReponse[@i].Reponse
                             </label>
@@ -63,7 +63,7 @@
                     for (int i = 0; i < @Model.ListeDeReponse.Count; i++)
                     {
                         <fieldset id="group2">
-                            <input type="radio" value="@Model.ListeDeReponse[@i].IDreponse" name="Idliste" id="reponse">
+                            <input type="radio" required value="@Model.ListeDeReponse[@i].IDreponse" name="Idliste" id="reponse">
                             <label>
                                 @Model.ListeDeReponse[@i].Reponse
                             </label>
